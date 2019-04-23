@@ -2,3 +2,6 @@
 Angular project for test purposes
 
 by Tom S. from Hamburg - Germany
+
+April 2019
+ 
