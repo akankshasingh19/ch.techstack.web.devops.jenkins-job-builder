@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "start:test": "nohup node server.js > output.log &",
-    "test": "jasmine",
+    "test": "./node_modules/jasmine-xml-reporter/bin/jasmine.js",
+    "junit": "npm test -- --junitreport --output=testresults/",
     "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js"
   },
@@ -23,6 +24,7 @@
   "devDependencies": {
     "documentation": "^10.0.0",
     "jasmine": "^3.4.0",
+    "jasmine-xml-reporter": "^1.2.1",
     "typedoc": "^0.14.2"
   },
   "dependencies": {
