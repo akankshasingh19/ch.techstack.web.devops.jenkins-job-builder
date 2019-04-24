@@ -63,3 +63,6 @@ typings/
 .idea
 docs
 testresults
+.nyc_output
+coverage
+codeanalyser

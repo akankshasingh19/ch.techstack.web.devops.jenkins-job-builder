@@ -13,7 +13,7 @@
     "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "eslint": "npx eslint server.js"
+    "eslint": "npx eslint --format jslint-xml server.js > codeanalyser/eslint.xml &"
   },
   "repository": {
     "type": "git",
