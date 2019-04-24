@@ -1,3 +1,3 @@
-# ch.techstack.web.angular.test-project
+# ch.techstack.web.devops.jenkins-job-builder
 
-Angular project for test purposes
+https://docs.openstack.org/infra/jenkins-job-builder/
