@@ -1,0 +1,29 @@
+{
+  "name": "ch.techstack.web.devops.jenkins-job-builder",
+  "version": "1.0.0",
+  "description": "https://docs.openstack.org/infra/jenkins-job-builder/",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "documentation build server.js -f html -o docs",
+    "doc:serve": "documentation serve server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thoschu/ch.techstack.web.devops.jenkins-job-builder.git"
+  },
+  "author": "Tom S. <thoschulte@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thoschu/ch.techstack.web.devops.jenkins-job-builder/issues"
+  },
+  "homepage": "https://github.com/thoschu/ch.techstack.web.devops.jenkins-job-builder#readme",
+  "devDependencies": {
+    "documentation": "^10.0.0",
+    "typedoc": "^0.14.2"
+  },
+  "dependencies": {
+    "ramda": "^0.26.1"
+  }
+}
