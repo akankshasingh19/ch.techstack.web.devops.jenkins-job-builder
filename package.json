@@ -14,7 +14,7 @@
     "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "eslint": "npx eslint --format checkstyle server.js"
+    "eslint": "npx eslint --format checkstyle --fix-dry-run server.js"
   },
   "repository": {
     "type": "git",
