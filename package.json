@@ -7,7 +7,8 @@
     "start": "node server.js",
     "start:test": "nohup node server.js > output.log &",
     "test": "./node_modules/jasmine-xml-reporter/bin/jasmine.js",
-    "junit": "npm test -- --junitreport --output=testresults/",
+    "test:xml": "npm test -- --junitreport --output=testresults/",
+    "junit": "npm run test:xml -- --junitreport --output=testresults/",
     "test:coverage:1": "nyc jasmine",
     "test:coverage:2": "nyc --reporter=html --reporter=text-lcov jasmine",
     "test:coverage:3": "nyc --reporter=cobertura jasmine",
@@ -15,7 +16,7 @@
     "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js",
     "nyc:help":"nyc --help",
-    "nyc:report": "nyc report --reporter=text-lcov"
+    "nyc": "nyc jasmine && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
