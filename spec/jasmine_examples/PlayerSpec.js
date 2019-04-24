@@ -24,7 +24,7 @@ describe("Player", function() {
     });
 
     it("should indicate that the song is currently paused", function() {
-      expect(player.isPlaying).toBeFalsy();
+      expect(!player.isPlaying).toBeFalsy();
 
       // demonstrates use of 'not' with a custom matcher
       expect(player).not.toBePlaying(song);
