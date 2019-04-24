@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jasmine",
     "doc": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js"
   },
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/thoschu/ch.techstack.web.devops.jenkins-job-builder#readme",
   "devDependencies": {
     "documentation": "^10.0.0",
+    "jasmine": "^3.4.0",
     "typedoc": "^0.14.2"
   },
   "dependencies": {
