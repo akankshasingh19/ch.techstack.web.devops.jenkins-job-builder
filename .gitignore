@@ -65,4 +65,4 @@ docs
 testresults
 .nyc_output
 coverage
-codeanalyser
+codeanalyser/eslint.xml
