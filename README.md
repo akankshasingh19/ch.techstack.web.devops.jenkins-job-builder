@@ -13,3 +13,5 @@
 > https://www.npmjs.com/package/jasmine-xml-reporter
 
 > https://devdocs.io/javascript/
+
+[![Coverage Status](https://coveralls.io/repos/github/thoschu/ch.techstack.web.devops.jenkins-job-builder/badge.svg?branch=master)](https://coveralls.io/github/thoschu/ch.techstack.web.devops.jenkins-job-builder?branch=master)

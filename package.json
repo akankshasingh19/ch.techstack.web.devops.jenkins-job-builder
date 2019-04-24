@@ -13,7 +13,7 @@
     "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js",
     "nyc:help": "nyc --help",
-    "nyc": "nyc --reporter=text-lcov npm test"
+    "nyc": "nyc --reporter=text-lcov npm test | coveralls"
   },
   "repository": {
     "type": "git",
