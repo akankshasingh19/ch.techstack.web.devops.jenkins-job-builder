@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "jasmine",
-    "doc": "documentation build server.js -f html -o docs",
+    "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js"
   },
   "repository": {
