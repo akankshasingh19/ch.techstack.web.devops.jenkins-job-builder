@@ -9,14 +9,11 @@
     "test": "jasmine",
     "test:xml": "./node_modules/jasmine-xml-reporter/bin/jasmine.js",
     "junit": "npm run test:xml -- --junitreport --output=testresults/",
-    "test:coverage:1": "nyc jasmine",
-    "test:coverage:2": "nyc --reporter=html --reporter=text-lcov jasmine",
-    "test:coverage:3": "nyc --reporter=cobertura jasmine",
-    "test:coverage:4": "nyc report --reporter=text-lcov | coveralls",
+    "cobertura": "nyc --reporter=html --reporter=cobertura npm test",
     "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js",
     "nyc:help": "nyc --help",
-    "nyc": "nyc jasmine && nyc report --reporter=text-lcov | coveralls"
+    "nyc": "nyc --reporter=text-lcov npm test"
   },
   "repository": {
     "type": "git",
