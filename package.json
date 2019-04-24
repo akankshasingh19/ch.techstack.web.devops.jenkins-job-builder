@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "start:test": "nohup node server.js > output.log &",
-    "test": "./node_modules/jasmine-xml-reporter/bin/jasmine.js",
-    "test:xml": "npm test -- --junitreport --output=testresults/",
+    "test": "jasmine",
+    "test:xml": "./node_modules/jasmine-xml-reporter/bin/jasmine.js",
     "junit": "npm run test:xml -- --junitreport --output=testresults/",
     "test:coverage:1": "nyc jasmine",
     "test:coverage:2": "nyc --reporter=html --reporter=text-lcov jasmine",
@@ -15,7 +15,7 @@
     "test:coverage:4": "nyc report --reporter=text-lcov | coveralls",
     "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js",
-    "nyc:help":"nyc --help",
+    "nyc:help": "nyc --help",
     "nyc": "nyc jasmine && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
