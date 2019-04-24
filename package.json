@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "start:test": "nohup node server.js testserver > output.log &",
-    "stop:test": "killall -SIGINT testserver",
+    "stop:test": "kill -SIGINT testserver",
     "test": "jasmine",
     "test:xml": "./node_modules/jasmine-xml-reporter/bin/jasmine.js",
     "junit": "npm run test:xml -- --junitreport --output=testresults/",
