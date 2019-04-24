@@ -8,8 +8,14 @@
     "start:test": "nohup node server.js > output.log &",
     "test": "./node_modules/jasmine-xml-reporter/bin/jasmine.js",
     "junit": "npm test -- --junitreport --output=testresults/",
+    "test:coverage:1": "nyc jasmine",
+    "test:coverage:2": "nyc --reporter=html --reporter=text-lcov jasmine",
+    "test:coverage:3": "nyc --reporter=cobertura jasmine",
+    "test:coverage:4": "nyc report --reporter=text-lcov | coveralls",
     "docs": "documentation build server.js -f html -o docs",
-    "doc:serve": "documentation serve server.js"
+    "doc:serve": "documentation serve server.js",
+    "nyc:help":"nyc --help",
+    "nyc:report": "nyc report --reporter=text-lcov"
   },
   "repository": {
     "type": "git",
@@ -22,9 +28,11 @@
   },
   "homepage": "https://github.com/thoschu/ch.techstack.web.devops.jenkins-job-builder#readme",
   "devDependencies": {
+    "coveralls": "^3.0.3",
     "documentation": "^10.0.0",
     "jasmine": "^3.4.0",
     "jasmine-xml-reporter": "^1.2.1",
+    "nyc": "^14.0.0",
     "typedoc": "^0.14.2"
   },
   "dependencies": {
