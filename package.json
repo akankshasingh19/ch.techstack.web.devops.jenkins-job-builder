@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "start:test": "nohup node server.js > output.log &",
+    "start:test": "nohup node server.js testserver > output.log &",
+    "stop:test": "killall -SIGINT testserver",
     "test": "jasmine",
     "test:xml": "./node_modules/jasmine-xml-reporter/bin/jasmine.js",
     "junit": "npm run test:xml -- --junitreport --output=testresults/",
@@ -13,8 +14,7 @@
     "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "eslint": "npx eslint server.js",
-    "eslint:style": "npx eslint server.js --format checkstyle > codeanalyser/checkstyle-results.xml &"
+    "eslint": "npx eslint server.js --format checkstyle"
   },
   "repository": {
     "type": "git",
