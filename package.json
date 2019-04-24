@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "start:test": "nohup node server.js > output.log &",
     "test": "jasmine",
     "docs": "documentation build server.js -f html -o docs",
-    "ngrok:v": "ngrok --version",
     "doc:serve": "documentation serve server.js"
   },
   "repository": {
