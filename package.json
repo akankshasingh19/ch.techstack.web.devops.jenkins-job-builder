@@ -14,8 +14,9 @@
     "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "eslint:default": "npx eslint server.js",
-    "eslint": "npx eslint --format checkstyle server.js"
+    "eslint:default": "npx eslint -f codeframe server.js",
+    "eslint": "npx eslint --format checkstyle server.js",
+    "buddy": "buddy server.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/thoschu/ch.techstack.web.devops.jenkins-job-builder#readme",
   "devDependencies": {
+    "buddy.js": "^0.9.3",
     "coveralls": "^3.0.3",
     "documentation": "^10.0.0",
     "eslint": "^5.16.0",

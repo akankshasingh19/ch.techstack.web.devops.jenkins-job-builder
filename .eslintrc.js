@@ -2,6 +2,7 @@ module.exports = {
   'env': {
     'browser': true,
     'es6': true,
+    'jasmine': true
   },
   'extends': 'google',
   'globals': {
@@ -13,6 +14,7 @@ module.exports = {
     'sourceType': 'module',
   },
   'rules': {
-    'semi': 'error'
+    'curly': 'error',
+    'indent': 'warn'
   },
 };

@@ -17,11 +17,14 @@ if (cluster.isMaster) {
 } else {
   // Workers can share any TCP connection
   // In this case it is an HTTP server
+  const OK = 200;
+    const PORT = 8008;
+
   http.createServer((req, res) => {
-    res.writeHead(200);
+    res.writeHead(OK);
 
     res.end(addString('hello', ' ', 'world', ' ', '...', '\n'));
-  }).listen(8000);
+  }).listen(PORT);
 
   /**
   * This function ...
