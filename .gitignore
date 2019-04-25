@@ -66,3 +66,5 @@ testresults
 .nyc_output
 coverage
 codeanalyser/eslint.xml
+output
+output.log

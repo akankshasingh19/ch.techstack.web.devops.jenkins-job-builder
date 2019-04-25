@@ -16,7 +16,10 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "eslint:default": "npx eslint --debug --color -f codeframe --max-warnings 1000000 server.js",
     "eslint": "npx eslint --format checkstyle -o codeanalyser/eslint.xml  server.js",
-    "buddy": "buddy server.js"
+    "buddy": "buddy server.js",
+    "jjb": "jenkins-jobs --conf ./jenkins_jobs.ini update ./jenkins_jobs.yaml",
+    "jjb:test:output": "jenkins-jobs test -o output ./jenkins_jobs.yaml",
+    "jjb:test": "jenkins-jobs test ./jenkins_jobs.yaml"
   },
   "repository": {
     "type": "git",
