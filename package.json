@@ -14,8 +14,8 @@
     "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "eslint:default": "npx eslint -f codeframe server.js",
-    "eslint": "npx eslint --format checkstyle server.js",
+    "eslint:default": "npx eslint --color -f codeframe server.js",
+    "eslint": "npx eslint --format checkstyle -o codeanalyser/eslint.xml  server.js",
     "buddy": "buddy server.js"
   },
   "repository": {
