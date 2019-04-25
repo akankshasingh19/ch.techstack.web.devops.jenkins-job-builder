@@ -18,7 +18,7 @@ if (cluster.isMaster) {
   // Workers can share any TCP connection
   // In this case it is an HTTP server
   const OK = 200;
-    const PORT = 8008;
+    const PORT = 8000;
 
   http.createServer((req, res) => {
     res.writeHead(OK);
