@@ -4,7 +4,8 @@
   "description": "https://docs.openstack.org/infra/jenkins-job-builder/",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "forever start server.js",
+    "stop": "forever stop server.js",
     "start:test": "nohup node server.js testserver > output.log &",
     "stop:test": "kill -SIGINT testserver",
     "test": "jasmine",
@@ -43,6 +44,7 @@
     "typedoc": "^0.14.2"
   },
   "dependencies": {
+    "forever": "^1.0.0",
     "ramda": "^0.26.1"
   }
 }
