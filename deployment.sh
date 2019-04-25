@@ -1,3 +1,8 @@
+#!/bin/bash
+
+# setup
+PROJECT=app
+
 # check if process is already running
 # and kill it, if so
 FILE=$PROJECT/pid
