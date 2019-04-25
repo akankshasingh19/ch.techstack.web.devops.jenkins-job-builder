@@ -24,7 +24,7 @@ if (cluster.isMaster) {
     res.writeHead(OK);
 
     res.end(addString('hello', ' ', 'world', ' ', '...', '\n'));
-  }).listen(8000);
+  }).listen(PORT);
 
   /**
   * This function ...
