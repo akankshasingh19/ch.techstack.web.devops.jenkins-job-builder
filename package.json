@@ -6,6 +6,7 @@
   "scripts": {
     "start": "forever start server.js",
     "stop": "forever stop server.js",
+    "poststop": "rimraf ./app",
     "start:test": "nohup node server.js testserver > output.log &",
     "stop:test": "kill -SIGINT testserver",
     "test": "jasmine",
@@ -45,6 +46,7 @@
   },
   "dependencies": {
     "forever": "^1.0.0",
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "rimraf": "^2.6.3"
   }
 }
