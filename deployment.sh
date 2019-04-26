@@ -7,7 +7,7 @@ PROJECT=app
 # and stop it, if so
 FILE=$PROJECT/pid
 if [ -f "$FILE" ]; then
-    echo $FILE
+    cat "$FILE"
     npm stop --prefix "$PROJECT"
 fi
 
