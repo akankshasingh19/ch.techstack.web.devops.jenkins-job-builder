@@ -6,7 +6,7 @@
   "scripts": {
     "start": "forever start server.js",
     "stop": "forever stop server.js",
-    "poststop": "rimraf ./app",
+    "poststop": "rimraf ../app",
     "start:test": "nohup node server.js testserver > output.log &",
     "stop:test": "kill -SIGINT testserver",
     "test": "jasmine",
