@@ -20,7 +20,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost || exit 1
 
-EXPOSE 22
+EXPOSE 80
 CMD ["/usr/sbin/sshd", "-D"]
 
 # VARIABLE_NAME = 'thomas'

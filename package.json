@@ -4,13 +4,15 @@
   "description": "https://docs.openstack.org/infra/jenkins-job-builder/",
   "main": "index.js",
   "config": {
-    "port": "8888"
+    "port": "80"
   },
   "scripts": {
-    "xxx": "node --inspect server.js",
+    "xxx": "",
     "monit": "pm2 monit",
-    "start": "pm2 start server.js",
-    "restart": "pm2 restart server.js",
+    "prestart": "npm stop && pm2 delete server.js",
+    "start:debug": "node --inspect server.js",
+    "start:dev": "pm2 start server.js --name=\"app\" --watch -i max",
+    "start": "pm2 start server.js --name=\"app\" -i max",
     "stop": "pm2 stop server.js",
     "poststop": "rimraf ../app",
     "start:test": "nohup node server.js testserver > output.log &",
@@ -21,9 +23,15 @@
     "test:xml": "./node_modules/jasmine-xml-reporter/bin/jasmine.js",
     "junit": "npm run test:xml -- --junitreport --output=testresults/",
     "cobertura": "nyc --reporter=html --reporter=cobertura npm test",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "test:coverage:1": "nyc jasmine --timeout=3000",
+    "test:coverage:2": "nyc --reporter=html --reporter=text-lcov jasmine",
+    "test:coverage:3": "nyc --reporter=cobertura jasmine",
+    "test:coverage:4": "nyc report --reporter=text-lcov | coveralls",
     "docs": "documentation build server.js -f html -o docs",
     "doc:serve": "documentation serve server.js",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "nyc:help": "nyc --help",
+    "nyc": "nyc jasmine && nyc report --reporter=text-lcov | coveralls",
     "eslint:default": "npx eslint --debug --color -f codeframe --max-warnings 1000000 server.js",
     "eslint": "npx eslint --format checkstyle -o codeanalyser/eslint.xml  server.js",
     "buddy": "buddy server.js",
@@ -32,7 +40,7 @@
     "jjb:test": "jenkins-jobs test ./jenkins_jobs.yaml",
     "perf:version": "artillery -V",
     "perf:test": "artillery quick --count 1000 -n 100 http://188.68.54.193",
-    "performance": "npm run pretest && artillery quick --output perf.log --count 10 -n 100 http://localhost:8080 && npm run posttest"
+    "performance": "npm run start && artillery quick --output perf.log --count 10 -n 100 http://localhost && npm stop"
   },
   "repository": {
     "type": "git",
