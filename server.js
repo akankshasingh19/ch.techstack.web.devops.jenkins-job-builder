@@ -12,34 +12,65 @@ if (cluster.isMaster) {
   }
 
   cluster.on('exit', (worker, code, signal) => {
-    console.log(`worker ${worker.process.pid} died`);
+    console.log(`worker ${worker.process.pid} died with ${code}/${signal}`);
   });
 } else {
   // Workers can share any TCP connection
   // In this case it is an HTTP server
-  const OK = 200;
-    const PORT = 8000;
-
   http.createServer((req, res) => {
-    res.writeHead(OK);
+    const htmlString=`
+      <html>
+          <head>
+              <link rel="shortcut icon" href="https://img.icons8.com/ios/50/000000/bug.png">
+              <title>${addString('Hello', ' ', 'world', ' ', '...', '\n')}</title>
+              <style>
+                  body {background-color: lightgrey;}
+                  h1   {color: blue;}
+                  p    {color: red;}
+                  span {color: green;}
+              </style>
+          </head>
+          <body>
+              <header>PORT: ${process.env.npm_package_config_port}</header>
+              <main>
+                  <h1>Hamburg - 2019</h1>
+                  <p>
+                  ${addString('Hello', ' ', 'world', ' ', '...', '\n')}
+                  </p>
+              </main>
+              <footer id="footer"></footer>
+          </body>
+          <script>
+              var zeit0 = performance.now();
+              document.getElementById("footer").innerHTML = "Hello JavaScript!";
+              var zeit1 = performance.now();
+              console.log("Der Aufruf von machEtwas dauerte " + (zeit1 - zeit0) + " Millisekunden.");
+          </script>
+      <html>
+  `;
 
-    res.end(addString('hello', ' ', 'world', ' ', '...', '\n'));
-  }).listen(PORT);
+    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+
+    setTimeout(() => {
+      res.end(htmlString);
+    }, 1500);
+
+  }).listen(process.env.npm_package_config_port);
 
   /**
-  * This function ...
-  * @param {string} input any strings
-  * @return {string} joined strings
-  */
+   * This function ...
+   * @param {string} input any strings
+   * @returns {string} joined strings
+   */
   function addString(...input) {
     let returnValue = '';
 
-    R.forEach((element) => returnValue = R.concat(returnValue, element), input);
-
-    // input.forEach((element) => returnValue = R.concat(returnValue, element));
+    R.forEach(element => {
+      returnValue = R.concat(returnValue, element);
+    }, input);
 
     return returnValue;
   }
 
-  console.log(`Worker ${process.pid} started...`);
+  console.log(`Worker ${process.pid} started om port ${process.env.npm_package_config_port}`);
 }

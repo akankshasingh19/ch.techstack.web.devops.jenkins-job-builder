@@ -3,12 +3,20 @@
   "version": "1.0.0",
   "description": "https://docs.openstack.org/infra/jenkins-job-builder/",
   "main": "index.js",
+  "config": {
+    "port": "8888"
+  },
   "scripts": {
-    "start": "forever start server.js",
-    "stop": "forever stop server.js",
+    "xxx": "node --inspect server.js",
+    "monit": "pm2 monit",
+    "start": "pm2 start server.js",
+    "restart": "pm2 restart server.js",
+    "stop": "pm2 stop server.js",
     "poststop": "rimraf ../app",
     "start:test": "nohup node server.js testserver > output.log &",
     "stop:test": "kill -SIGINT testserver",
+    "pretest": "npm start",
+    "posttest": "npm stop",
     "test": "jasmine",
     "test:xml": "./node_modules/jasmine-xml-reporter/bin/jasmine.js",
     "junit": "npm run test:xml -- --junitreport --output=testresults/",
@@ -21,7 +29,10 @@
     "buddy": "buddy server.js",
     "jjb": "jenkins-jobs --conf ./jenkins_jobs.ini update ./jenkins_jobs.yaml",
     "jjb:test:output": "jenkins-jobs test -o output ./jenkins_jobs.yaml",
-    "jjb:test": "jenkins-jobs test ./jenkins_jobs.yaml"
+    "jjb:test": "jenkins-jobs test ./jenkins_jobs.yaml",
+    "perf:version": "artillery -V",
+    "perf:test": "artillery quick --count 1000 -n 100 http://188.68.54.193",
+    "performance": "npm run pretest && artillery quick --output perf.log --count 10 -n 100 http://localhost:8080 && npm run posttest"
   },
   "repository": {
     "type": "git",
@@ -34,8 +45,10 @@
   },
   "homepage": "https://github.com/thoschu/ch.techstack.web.devops.jenkins-job-builder#readme",
   "devDependencies": {
+    "@mozillasecurity/octo": "^2.0.0",
     "buddy.js": "^0.9.3",
     "coveralls": "^3.0.3",
+    "cypress": "^3.2.0",
     "documentation": "^10.0.0",
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.12.0",
@@ -45,7 +58,8 @@
     "typedoc": "^0.14.2"
   },
   "dependencies": {
-    "forever": "^1.0.0",
+    "artillery": "^1.6.0-28",
+    "pm2": "^3.5.0",
     "ramda": "^0.26.1",
     "rimraf": "^2.6.3"
   }
