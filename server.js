@@ -18,6 +18,8 @@ if (cluster.isMaster) {
   // Workers can share any TCP connection
   // In this case it is an HTTP server
   http.createServer((req, res) => {
+    const httpStatusCodeOk = 200;
+    const timeOut = 2500;
     const htmlString=`
       <html>
           <head>
@@ -49,11 +51,11 @@ if (cluster.isMaster) {
       <html>
   `;
 
-    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+    res.writeHead(httpStatusCodeOk, {'Content-Type': 'text/html; charset=utf-8'});
 
     setTimeout(() => {
       res.end(htmlString);
-    }, 1500);
+    }, timeOut);
 
   }).listen(process.env.npm_package_config_port);
 
