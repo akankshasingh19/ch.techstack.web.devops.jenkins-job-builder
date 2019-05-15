@@ -1,0 +1,65 @@
+- job:
+      name: job-name
+      project-type: freestyle
+      defaults: global
+      disabled: false
+      display-name: 'Fancy job name'
+      builders:
+          - shell: 'ls'
+          - shell: 'pwd'
+
+- job:
+      name: job-name-2
+      project-type: freestyle
+      disabled: false
+      defaults: global
+      display-name: 'Fancy job 2'
+      concurrent: true
+      workspace: /
+      quiet-period: 5
+      block-downstream: false
+      block-upstream: false
+      retry-count: 3
+      node: master || aws-container-slave
+      builders:
+          - shell: 'ls -ltr'
+
+- job:
+      name: job-name-3
+      project-type: freestyle
+      disabled: false
+      defaults: global
+      parameters:
+          - string:
+                name: BRANCH
+                default: '{branch|master}'
+      builders:
+          - shell: 'echo $BRANCH'
+
+- project:
+      name: project-name
+      jobs:
+          - 'job-name-{num}':
+                arch: 'amd64'
+                num: 4
+          - 'job-name-{num}':
+                arch: 'i86'
+                num: 5
+
+- job-template:
+      name: 'job-name-{num}'
+      defaults: global
+      author: 'tom'
+      parameters:
+          - string:
+                name: AUTHOR
+                default: '{author}'
+                description: 'Testbeschreibung 1'
+          - string:
+                name: VERSION
+                default: '{version|1.2.3}'
+                description: 'Testbeschreibung 2'
+      builders:
+          - shell: "echo Build arch {arch}."
+          - shell: 'echo $AUTHOR'
+          - shell: 'echo $BUILD_ID'

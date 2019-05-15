@@ -22,34 +22,34 @@ if (cluster.isMaster) {
     const timeOut = 2500;
     const htmlString=`
       <html>
-          <head>
-              <link rel="shortcut icon" href="https://img.icons8.com/ios/50/000000/bug.png">
-              <title>${addString('Hello', ' ', 'world', ' ', '...', '\n')}</title>
-              <style>
-                  body {background-color: lightgrey;}
-                  h1   {color: blue;}
-                  p    {color: red;}
-                  span {color: green;}
-              </style>
-          </head>
-          <body>
-              <header>PORT: ${process.env.npm_package_config_port}</header>
-              <main>
-                  <h1>Hamburg - 2019</h1>
-                  <p>
-                  ${addString('Hello', ' ', 'world', ' ', '...', '\n')}
-                  </p>
-              </main>
-              <footer id="footer"></footer>
-          </body>
-          <script>
-              var zeit0 = performance.now();
-              document.getElementById("footer").innerHTML = "Hello JavaScript!";
-              var zeit1 = performance.now();
-              console.log("Der Aufruf von machEtwas dauerte " + (zeit1 - zeit0) + " Millisekunden.");
-          </script>
+        <head>
+          <link rel="shortcut icon" href="https://img.icons8.com/ios/50/000000/bug.png">
+          <title>${addString('Hello', ' ', 'world', ' ', '...', '\n')}</title>
+          <style>
+            body {background-color: lightgrey;}
+            h1   {color: blue;}
+            p    {color: red;}
+            span {color: green;}
+          </style>
+        </head>
+        <body>
+          <header>PORT: ${process.env.npm_package_config_port}</header>
+          <main>
+            <h1>Hamburg - 2019</h1>
+            <p>
+            ${addString('Hello', ' ', 'world', ' ', '...', '\n')}
+            </p>
+          </main>
+          <footer id="footer"></footer>
+        </body>
+        <script>
+          var zeit0 = performance.now();
+          document.getElementById("footer").innerHTML = "Hello JavaScript!";
+          var zeit1 = performance.now();
+          console.log('Der Aufruf dauerte ' + (zeit1 - zeit0) + ' Millisekunden.');
+        </script>
       <html>
-  `;
+    `;
 
     res.writeHead(httpStatusCodeOk, {'Content-Type': 'text/html; charset=utf-8'});
 

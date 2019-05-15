@@ -68,3 +68,4 @@ coverage
 codeanalyser/eslint.xml
 output
 output.log
+jenkins-job-builder
